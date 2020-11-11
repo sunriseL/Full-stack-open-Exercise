@@ -3,6 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+const Statistics = (props) => {
+  var {good, neutral, bad} = props
+  return (
+    <div>
+        <p>good {good}</p>
+        <p>neutral {neutral}</p>
+        <p>bad {bad}</p>
+        <p>average {(good - bad) / (good + neutral + bad)}</p>
+        <p>positive {good / (good + neutral + bad)}%</p>
+    </div>
+  )
+}
+
 
 const App = () => {
   // save clicks of each button to own state
@@ -17,11 +30,7 @@ const App = () => {
         <button onClick={() => {setNeutral(neutral + 1)}}>neutral</button>
         <button onClick={() => {setBad(bad + 1)}}>bad</button>
       <h1>statistics</h1>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <p>average {(good - bad) / (good + neutral + bad)}</p>
-        <p>positive {good / (good + neutral + bad)}%</p>
+      <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
   )
 }
