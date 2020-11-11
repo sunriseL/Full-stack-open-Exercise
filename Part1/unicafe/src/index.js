@@ -6,7 +6,10 @@ import reportWebVitals from './reportWebVitals';
 const Statistic = (props) => {
   var {text, value} = props;
   return (
-    <p>{text} {value}</p>
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
   )
 }
 
@@ -18,13 +21,15 @@ const Statistics = (props) => {
     )
   }
   return (
-    <div>
+    <table>
+      <tbody>
         <Statistic text="good" value={good} />
         <Statistic text="neutral" value={neutral} />
         <Statistic text="bad" value={bad} />
-        <p>average {(good - bad) / (good + neutral + bad)}</p>
-        <p>positive {good / (good + neutral + bad)}%</p>
-    </div>
+        <Statistic text="average" value={(good - bad) / (good + neutral + bad)} />
+        <tr><td>positive</td><td>{good / (good + neutral + bad) * 100}%</td></tr>
+      </tbody>      
+    </table>
   )
 }
 
