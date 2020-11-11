@@ -5,6 +5,11 @@ import reportWebVitals from './reportWebVitals';
 
 const Statistics = (props) => {
   var {good, neutral, bad} = props
+  if(good + neutral + bad == 0) {
+    return (
+      <div>No feedback given</div>
+    )
+  }
   return (
     <div>
         <p>good {good}</p>
