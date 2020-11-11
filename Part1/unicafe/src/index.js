@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+const Statistic = (props) => {
+  var {text, value} = props;
+  return (
+    <p>{text} {value}</p>
+  )
+}
+
 const Statistics = (props) => {
   var {good, neutral, bad} = props
   if(good + neutral + bad == 0) {
@@ -12,9 +19,9 @@ const Statistics = (props) => {
   }
   return (
     <div>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
+        <Statistic text="good" value={good} />
+        <Statistic text="neutral" value={neutral} />
+        <Statistic text="bad" value={bad} />
         <p>average {(good - bad) / (good + neutral + bad)}</p>
         <p>positive {good / (good + neutral + bad)}%</p>
     </div>
