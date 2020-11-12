@@ -12,7 +12,6 @@ const Part = (props) => {
 }
 
 const Content = (props) => {
-  console.log(props.parts[0].exercises);
   return (
     <div>
       <Part part={props.parts[0].name} exercises={props.parts[0].exercises} />
@@ -23,7 +22,9 @@ const Content = (props) => {
 }
 
 const Total = (props) => {
-  var total = props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises;
+  var total = props.parts.reduce((s, p) => {
+    return s + p.exercises;
+  }, 0)
   return (
     <p>Number of exercises {total}</p>
   )
