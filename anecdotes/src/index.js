@@ -5,15 +5,26 @@ import * as serviceWorker from './serviceWorker';
 
 const App = (props) => {
   const [selected, setSelected] = useState(0)
-
+  const [points, setPoints] = useState({})
   const refreshAnecdote = () => {
       setSelected(Math.floor(Math.random() * props.anecdotes.length));
+  }
+
+  const vote = () => {
+    var copy = {...points}
+    if (copy[selected])
+      copy[selected] += 1;
+    else
+      copy[selected] = 1;
+    setPoints(copy);
   }
 
   return (
     <div>
       <p>{props.anecdotes[selected]}</p>
+      <p>has {points[selected]?points[selected]:0} votes</p>
       <button onClick={refreshAnecdote}> next anecdote </button>
+      <button onClick={vote}> vote </button>
     </div>
   )
 }
