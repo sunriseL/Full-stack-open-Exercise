@@ -16,12 +16,27 @@ const App = (props) => {
     setPoints(copy);
   }
 
+  const mostSelected = () => {
+    var max = 0;
+    var index = 0;
+    points.map( (elem,i) => {
+      if (elem > max) {
+        max = elem;
+        index = i;
+      }
+    })
+    return index;
+  }
+
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{props.anecdotes[selected]}</p>
       <p>has {points[selected]} votes</p>
       <button onClick={refreshAnecdote}> next anecdote </button>
       <button onClick={vote}> vote </button>
+      <h1>Anecdote with most votes</h1>
+      <p>{props.anecdotes[mostSelected()]}</p>
     </div>
   )
 }
